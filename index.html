@@ -1,9 +1,67 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Amber JS CRUD Tutorial</title>
+  <meta charset="utf-8">
+  <title>Ember Starter Kit</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <script type="text/x-handlebars">
+    <h2>Welcome to Ember.js</h2>
 
+    {{outlet}}
+  </script>
+
+  <script type="text/x-handlebars" id="index">
+    <ul>
+    {{#each item in model}}
+      <li>{{item}}</li>
+    {{/each}}
+    </ul>
+    {{#link-to 'customer'}} Goto Customers page {{/link-to}}
+  </script>
+
+  <script type="text/x-handlebars" id="first">
+    <h3 {{action 'headerClick'}}>This is the first route</h3>
+  </script>
+
+  <script type="text/x-handlebars" id="edit-customer">
+    <h3>This is Edit Customer</h3>
+    <p>{{#link-to 'customer'}} Goto Customers{{/link-to}}</p>
+  </script>
+
+  <script type="text/x-handlebars" id="customer">
+    <div {{action 'headerClick'}}>This is show customer template</div>
+    <div><a {{action 'changeName'}}>Click here to change the name</a></div>
+    
+    {{#link-to 'index'}} Goto First Page {{/link-to}}
+
+    {{#each customer in model}}
+      <p>
+      
+        <div>{{customer.firstName}}</div>
+        <div>{{customer.lastName}}</div>
+        <div>{{customer.email}}</div>
+      
+      </p>
+
+      <p>
+        <a href="" {{action 'gotoEditCustomer'}}>Edit Customer</a>
+      </p>
+
+      <p>
+        <a href="" {{action 'gotoAddCustomer'}}>Add Customer</a>
+      </p>
+
+    {{/each}}
+  </script>
+
+  <script src="js/libs/jquery-1.10.2.js"></script>
+  <script src="js/libs/ember-template-compiler-1.12.0.js"></script>
+  <script src="js/libs/ember-1.12.0.debug.js"></script>
+  <script src="js/app.js"></script>
+  <!-- to activate the test runner, add the "?test" query string parameter -->
+  <script src="tests/runner.js"></script>
 </body>
 </html>
