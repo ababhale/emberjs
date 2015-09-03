@@ -28,6 +28,12 @@
 
   <script type="text/x-handlebars" id="edit-customer">
     <h3>This is Edit Customer</h3>
+    <p>
+        <div>{{input value=model.firstName}}</div>
+        <div>{{input value=model.lastName}}</div>
+        <div>{{input value=model.email}}</div>
+    </p>
+    <p><a href="" {{action 'saveCustomer'}}>Save Customer</a></p>
     <p>{{#link-to 'customer'}} Goto Customers{{/link-to}}</p>
   </script>
 
@@ -40,14 +46,14 @@
     {{#each customer in model}}
       <p>
       
-        <div>{{customer.firstName}}</div>
-        <div>{{customer.lastName}}</div>
-        <div>{{customer.email}}</div>
+        <div>{{customer.firstName}} {{input value=customer.firstName}}</div>
+        <div>{{customer.lastName}} {{input value=customer.lastName}}</div>
+        <div>{{customer.email}} {{input value=customer.email}}</div>
       
       </p>
 
       <p>
-        <a href="" {{action 'gotoEditCustomer'}}>Edit Customer</a>
+        {{#link-to 'edit-customer' customer}} Edit Customer {{/link-to}}
       </p>
 
       <p>
@@ -58,8 +64,9 @@
   </script>
 
   <script src="js/libs/jquery-1.10.2.js"></script>
-  <script src="js/libs/ember-template-compiler-1.12.0.js"></script>
-  <script src="js/libs/ember-1.12.0.debug.js"></script>
+  <script src="js/libs/ember-template-compiler-1.12.1.js"></script>
+  <script src="js/libs/ember-1.12.1.debug.js"></script>
+  <script src="js/libs/ember-data-1.13.11.js"></script>
   <script src="js/app.js"></script>
   <!-- to activate the test runner, add the "?test" query string parameter -->
   <script src="tests/runner.js"></script>
